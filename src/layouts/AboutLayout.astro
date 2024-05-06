@@ -1,0 +1,12 @@
+---
+import Header from "@components/Header.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+---
+
+<Layout title="About">
+  <Header />
+  <Main>
+    <slot />
+  </Main>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import RecentPosts from "@components/RecentPosts.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <Header />
+  <Main>
+    <p class="mb-20 text-lg">男，90 后，前端开发者，现居合肥。这里记笔记。</p>
+    <RecentPosts />
+  </Main>
+</Layout>

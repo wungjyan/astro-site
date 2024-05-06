@@ -1,0 +1,47 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  const postResult = posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+
+  return [...postResult];
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function getDate(date: Date) {
+  const myDatetime = new Date(date);
+  return myDatetime.toLocaleDateString();
+}
+---
+
+<Layout>
+  <Main>
+    <section class="pt-10 pb-20">
+      <button
+        class="focus-outline mb-3 mt-8 flex items-center hover:opacity-75"
+        onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
+        ><svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
+          ></path>
+        </svg><span>Back</span></button
+      >
+      <article>
+        <h1 class="text-4xl text-black font-semibold mb-5">
+          {post.data.title}
+        </h1>
+        <p class="mb-10">发布：{getDate(post.data.pubDate)}</p>
+        <div class="prose"><Content /></div>
+      </article>
+    </section>
+  </Main>
+</Layout>
