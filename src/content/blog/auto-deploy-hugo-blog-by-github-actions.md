@@ -1,6 +1,7 @@
 ---
 title: "通过 Github Actions 实现 Hugo 博客的自动构建部署"
 pubDate: 2022-02-24T09:50:29+08:00
+modDate: 2024-05-08T08:57:18.375Z
 tags: ["Github Actions", "自动部署", "Hugo", "blog"]
 ---
 

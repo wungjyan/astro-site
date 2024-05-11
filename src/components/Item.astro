@@ -1,0 +1,23 @@
+---
+import formatDate from "@utils/getFormatDate";
+const { postDetail } = Astro.props;
+console.log("🚀 ~ postDetail:", postDetail);
+---
+
+<article class="mb-5 flex items-center">
+  <h2 class="post-title" transition:name={postDetail.data.title}>
+    <a href={`/blog/${postDetail.slug}/`}> {postDetail.data.title}</a>
+  </h2>
+  <p class="post-meta" transition:name={formatDate(postDetail.data.pubDate)}>
+    {formatDate(postDetail.data.pubDate)}
+  </p>
+</article>
+
+<style>
+  .post-title {
+    @apply text-lg text-skin-base font-medium;
+  }
+  .post-meta {
+    @apply text-skin-base opacity-60 text-sm my-2 ml-2;
+  }
+</style>

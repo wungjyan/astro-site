@@ -2,13 +2,20 @@
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
-import RecentPosts from "@components/RecentPosts.astro";
+import Item from "@components/Item.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog", ({ data }) => !data.draft);
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="瓶子笔记">
   <Header />
   <Main>
-    <p class="mb-20 text-lg">男，90 后，前端开发者，现居合肥。这里记笔记。</p>
-    <RecentPosts />
+    <div class="min-h-lvh">
+      {
+        posts.map((post) => {
+          return <Item postDetail={post} />;
+        })
+      }
+    </div>
   </Main>
 </Layout>

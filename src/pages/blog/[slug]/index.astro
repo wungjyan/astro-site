@@ -1,7 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
 import { getCollection } from "astro:content";
+import formatDate from "@utils/getFormatDate";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -23,25 +25,76 @@ function getDate(date: Date) {
 }
 ---
 
-<Layout>
+<Layout title={post.data.title}>
+  <Header />
   <Main>
-    <section class="pt-10 pb-20">
-      <button
-        class="focus-outline mb-3 mt-8 flex items-center hover:opacity-75"
-        onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
-        ><svg xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-          ></path>
-        </svg><span>Back</span></button
+    <section class="pb-20">
+      <h1
+        class="text-2xl text-skin-base font-semibold mb-5"
+        transition:name={post.data.title}
       >
-      <article>
-        <h1 class="text-4xl text-black font-semibold mb-5">
-          {post.data.title}
-        </h1>
-        <p class="mb-10">发布：{getDate(post.data.pubDate)}</p>
-        <div class="prose"><Content /></div>
+        {post.data.title}
+      </h1>
+      <p class="mb-10 opacity-80">
+        <span transition:name={formatDate(post.data.pubDate)}
+          >{formatDate(post.data.pubDate)}</span
+        >
+        {
+          post.data.modDate ? (
+            <span class="ml-11">
+              <i class="text-sm opacity-60">update: </i>
+              {formatDate(post.data.modDate)}
+            </span>
+          ) : (
+            ""
+          )
+        }
+      </p>
+      <article class="prose">
+        <Content />
       </article>
     </section>
   </Main>
 </Layout>
+
+<script is:inline>
+  function attachCopyButtons() {
+    let copyButtonLabel = "Copy";
+    let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (let codeBlock of codeBlocks) {
+      let wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      let copyButton = document.createElement("button");
+      copyButton.className =
+        "copy-code absolute right-3 -top-3 rounded bg-skin-card px-2 py-1 text-xs leading-4 text-skin-base font-medium";
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      let code = block.querySelector("code");
+      let text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+</script>
