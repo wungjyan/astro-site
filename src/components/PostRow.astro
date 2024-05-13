@@ -2,14 +2,19 @@
 import formatDate from "@utils/getFormatDate";
 const { postDetail } = Astro.props;
 console.log("🚀 ~ postDetail:", postDetail);
+
+const {
+  data: { title, pubDate },
+  slug,
+} = postDetail;
 ---
 
 <article class="mb-5 flex items-center">
-  <h2 class="post-title" transition:name={postDetail.data.title}>
-    <a href={`/blog/${postDetail.slug}/`}> {postDetail.data.title}</a>
+  <h2 class="post-title" transition:name={title}>
+    <a href={`/blog/${slug}/`}> {title}</a>
   </h2>
-  <p class="post-meta" transition:name={formatDate(postDetail.data.pubDate)}>
-    {formatDate(postDetail.data.pubDate)}
+  <p class="post-meta" transition:name={formatDate(pubDate)}>
+    {formatDate(pubDate)}
   </p>
 </article>
 
