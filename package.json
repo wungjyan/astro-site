@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro",
-    "format": "prettier --write . --plugin=prettier-plugin-astro"
+    "format": "prettier --write . --plugin=prettier-plugin-astro",
+    "create": "node createPost.cjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
