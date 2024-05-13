@@ -1,10 +1,5 @@
-function withOpacity(variableName) {
-  return ({ opacityValue }) => {
-    if (opacityValue !== undefined) {
-      return `rgba(var(${variableName}), ${opacityValue})`;
-    }
-    return `rgb(var(${variableName}))`;
-  };
+function getCssVar(variableName) {
+  return `var(${variableName})`;
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -14,34 +9,34 @@ export default {
     extend: {
       textColor: {
         skin: {
-          base: withOpacity("--color-text-base"),
-          accent: withOpacity("--color-accent"),
-          inverted: withOpacity("--color-fill"),
+          base: getCssVar("--color-text-base"),
+          accent: getCssVar("--color-accent"),
+          inverted: getCssVar("--color-fill"),
         },
       },
       backgroundColor: {
         skin: {
-          fill: withOpacity("--color-fill"),
-          accent: withOpacity("--color-accent"),
-          inverted: withOpacity("--color-text-base"),
-          card: withOpacity("--color-card"),
+          fill: getCssVar("--color-fill"),
+          accent: getCssVar("--color-accent"),
+          inverted: getCssVar("--color-text-base"),
+          card: getCssVar("--color-card"),
         },
       },
       outlineColor: {
         skin: {
-          fill: withOpacity("--color-accent"),
+          fill: getCssVar("--color-accent"),
         },
       },
       borderColor: {
         skin: {
-          line: withOpacity("--color-border"),
-          fill: withOpacity("--color-text-base"),
-          accent: withOpacity("--color-accent"),
+          line: getCssVar("--color-border"),
+          fill: getCssVar("--color-text-base"),
+          accent: getCssVar("--color-accent"),
         },
       },
       fill: {
         skin: {
-          base: withOpacity("--color-text-base"),
+          base: getCssVar("--color-text-base"),
         },
       },
     },

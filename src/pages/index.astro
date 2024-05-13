@@ -3,16 +3,18 @@ import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import PostRow from "@components/PostRow.astro";
+import getSortedPosts from "@utils/getSortedPosts";
 import { getCollection } from "astro:content";
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const allPosts = await getCollection("blog");
+const sortedPosts = getSortedPosts(allPosts);
 ---
 
 <Layout title="瓶子笔记">
   <Header />
   <Main>
-    <div class="min-h-lvh">
+    <div>
       {
-        posts.map((post) => {
+        sortedPosts.map((post) => {
           return <PostRow postDetail={post} />;
         })
       }

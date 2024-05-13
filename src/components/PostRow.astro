@@ -1,7 +1,6 @@
 ---
-import formatDate from "@utils/getFormatDate";
+import FormattedDate from "@components/FormattedDate.astro";
 const { postDetail } = Astro.props;
-console.log("🚀 ~ postDetail:", postDetail);
 
 const {
   data: { title, pubDate },
@@ -10,19 +9,8 @@ const {
 ---
 
 <article class="mb-5 flex items-center">
-  <h2 class="post-title" transition:name={title}>
+  <h2 class="text-lg text-skin-base font-medium" transition:name={title}>
     <a href={`/blog/${slug}/`}> {title}</a>
   </h2>
-  <p class="post-meta" transition:name={formatDate(pubDate)}>
-    {formatDate(pubDate)}
-  </p>
+  <FormattedDate date={pubDate} />
 </article>
-
-<style>
-  .post-title {
-    @apply text-lg text-skin-base font-medium;
-  }
-  .post-meta {
-    @apply text-skin-base opacity-60 text-sm my-2 ml-2;
-  }
-</style>
