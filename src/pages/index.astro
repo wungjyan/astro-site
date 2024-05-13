@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
-import Item from "@components/Item.astro";
+import PostRow from "@components/PostRow.astro";
 import { getCollection } from "astro:content";
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 ---
@@ -13,7 +13,7 @@ const posts = await getCollection("blog", ({ data }) => !data.draft);
     <div class="min-h-lvh">
       {
         posts.map((post) => {
-          return <Item postDetail={post} />;
+          return <PostRow postDetail={post} />;
         })
       }
     </div>
