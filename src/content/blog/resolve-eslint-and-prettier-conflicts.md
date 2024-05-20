@@ -2,6 +2,7 @@
 title: "解决 Eslint 和 Prettier 的冲突"
 pubDate: 2024-03-05T16:16:47+08:00
 tags: ["eslint", "prettier"]
+draft: true
 ---
 
 当项目同时使用 Eslint 和 Prettier 时，往往格式化时会有冲突，导致最终格式化效果不对。发现问这个问题的人还不少，所以这里记录一下解决办法，需要的时候发给人看。
