@@ -1,6 +1,7 @@
 ---
 title: Vite 项目配置模块分包
 pubDate: 2024-06-13T14:04:18.925Z
+tags: ["vite"]
 ---
 
 使用 Vite 开发项目，build 后发现所有的逻辑文件都被打包在一个入口 js 文件中，如图：
@@ -53,7 +54,9 @@ pubDate: 2024-06-13T14:04:18.925Z
   }
 }
 ```
+
 至此，我们解决了基本需求。还有一个问题就是如果项目中需要拆分的模块很多，我们一个个去列举模块也不太现实，这时候就可以换个配置模式。`manualChunks` 是支持配置成一个函数的，函数的入参是每一个被打包的模块id，我们可以判断这个 id 是否是来自`node_modules` 路径的，如果是则代表是第三方库，就可以统一打包进一个chunk中，配置如下：
+
 ```js
 {
     // 忽略其他配置
@@ -70,5 +73,5 @@ pubDate: 2024-06-13T14:04:18.925Z
     }
 }
 ```
-更多关于 `manualChunks` 的配置，可参考文档：[output-manualchunks](ttps://cn.rollupjs.org/configuration-options/#output-manualchunks)
 
+更多关于 `manualChunks` 的配置，可参考文档：[output-manualchunks](ttps://cn.rollupjs.org/configuration-options/#output-manualchunks)

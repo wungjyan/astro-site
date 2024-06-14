@@ -1,7 +1,7 @@
 ---
 title: 使用 Astro 开发一个博客
 pubDate: 2024-05-13T03:14:03.217Z
-tags: ["随笔"]
+tags: ["astro", "blog"]
 ---
 
 如你所见，此博客使用 [Astro](https://astro.build/) 开发的，整个站点还是比较简陋的，但足够用于发布文章。
