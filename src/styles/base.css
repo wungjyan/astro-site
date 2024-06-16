@@ -18,7 +18,7 @@
   }
 
   body {
-    @apply min-h-svh bg-skin-fill text-skin-base select-auto selection:bg-skin-accent selection:bg-opacity-70;
+    @apply min-h-svh bg-skin-fill text-skin-base select-auto selection:bg-skin-accent selection:text-white;
   }
   svg {
     @apply inline-block h-6 w-6 fill-skin-base;
