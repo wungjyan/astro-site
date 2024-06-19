@@ -19,7 +19,7 @@ setPreference();
 window.onload = () => {
   function setThemeFeature() {
     setPreference();
-    document.querySelector("#theme-btn")?.addEventListener("click", (event) => {
+    document.querySelector("#theme-btn")?.addEventListener("click", () => {
       themeValue = themeValue === "light" ? "dark" : "light";
       setPreference();
     });
