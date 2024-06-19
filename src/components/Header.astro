@@ -1,13 +1,14 @@
 ---
+import { SITE } from "@config";
 import ToggleThemeBtn from "./ToggleThemeBtn.astro";
 ---
 
 <header class="w-full relative">
   <div class="nav-container">
-    <a class="logo" href="/">瓶子笔记</a>
+    <a class="logo" href="/">{SITE.title}</a>
     <nav id="nav-menu">
       <ul class="flex">
-        <li><a href="/about/">About</a></li>
+        <li><a href="/about/">关于</a></li>
         <li>
           <ToggleThemeBtn />
         </li>
