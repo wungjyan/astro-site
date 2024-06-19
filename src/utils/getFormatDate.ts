@@ -1,10 +1,11 @@
-function formatDate(date: Date | undefined | null) {
-  if (!date) {
-    return "";
-  }
-  const str = new Date(date).toDateString();
-  const need = str.split(" ").slice(1);
-  return `${need[0]} ${parseInt(need[1])},${need[2]}`;
+function formatDate(date: Date): string {
+  const d = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const [month, day, year] = d.split("/");
+  return `${month}-${day}，${year}`;
 }
 
 export default formatDate;

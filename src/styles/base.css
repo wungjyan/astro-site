@@ -5,20 +5,20 @@
 @layer base {
   :root,
   html[data-theme="light"] {
-    --color-fill: #fffffe;
-    --color-text-base: #00214d;
-    --color-accent: #00ebc7;
+    --color-fill: #ffffff;
+    --color-text-base: #333333;
+    --color-accent: #007bff;
     --color-card: #f2f4f6;
   }
   html[data-theme="dark"] {
-    --color-fill: #16161a;
-    --color-text-base: #fffffe;
-    --color-accent: #7f5af0;
+    --color-fill: #121212;
+    --color-text-base: #E0E0E0;
+    --color-accent: #FFC107;
     --color-card: #242629;
   }
 
   body {
-    @apply min-h-svh bg-skin-fill text-skin-base select-auto selection:bg-skin-accent selection:bg-opacity-70;
+    @apply min-h-svh bg-skin-fill text-skin-base select-auto selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
   }
   svg {
     @apply inline-block h-6 w-6 fill-skin-base;

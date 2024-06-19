@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
-import PostRow from "@components/PostRow.astro";
+import PostSummary from "@components/PostSummary.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("blog");
@@ -15,7 +15,7 @@ const sortedPosts = getSortedPosts(allPosts);
     <div>
       {
         sortedPosts.map((post) => {
-          return <PostRow postDetail={post} />;
+          return <PostSummary postDetail={post} />;
         })
       }
     </div>
