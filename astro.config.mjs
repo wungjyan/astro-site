@@ -1,9 +1,15 @@
-import { defineConfig } from 'astro/config';
+import { SITE } from "./src/config";
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind({
-    applyBaseStyles: false
-  })]
+  site: SITE.website,
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+  ],
 });
