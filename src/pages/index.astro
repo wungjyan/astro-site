@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import PostSummary from "@components/PostSummary.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { getCollection } from "astro:content";
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection("posts");
 const sortedPosts = getSortedPosts(allPosts);
 ---
 
