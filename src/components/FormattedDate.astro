@@ -1,20 +1,18 @@
 ---
+import formatDate from "@utils/getFormatDate";
 interface Props {
   date: Date;
 }
 
 const { date } = Astro.props;
+
+const dateStr = formatDate(date);
 ---
 
 <time
   datetime={date.toISOString()}
   class="text-skin-base opacity-60 text-sm my-2 ml-2"
+  transition:name={dateStr}
 >
-  {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
+  {dateStr}
 </time>
