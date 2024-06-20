@@ -24,8 +24,8 @@ const { Content } = await post.render();
   title={post.data.title}
   description={post.data.description || post.data.title}
 >
-  <Main>
-    <div class="fixed top-0 right-0 p-5">
+  <div class="max-w-2xl mx-auto px-4 sm:pt-14 sm:px-0">
+    <div class="flex justify-end py-5 sm:fixed sm:top-0 sm:right-0 sm:p-5">
       <ToggleThemeBtn />
     </div>
     <section class="pb-20">
@@ -34,7 +34,7 @@ const { Content } = await post.render();
         transition:name={post.data.title}
       >
         <svg
-          class="absolute left-[-40px] cursor-pointer"
+          class="absolute top-[-40px] sm:left-[-40px] sm:top-auto cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
           height="1em"
@@ -68,7 +68,7 @@ const { Content } = await post.render();
         <Content />
       </article>
     </section>
-  </Main>
+  </div>
 </Layout>
 
 <script is:inline>

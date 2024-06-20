@@ -9,7 +9,10 @@ const {
 ---
 
 <article class="mb-5 flex items-center justify-between">
-  <h2 class="text-lg text-skin-base font-medium" transition:name={title}>
+  <h2
+    class="max-w-60 sm:max-w-lg text-lg text-skin-base font-medium"
+    transition:name={title}
+  >
     <a href={`/posts/${slug}/`}> {title}</a>
   </h2>
   <FormattedDate date={pubDate} />
