@@ -25,7 +25,7 @@ pubDate: ${pubDate}
     const content = `${frontmatter}\n这里是你的内容。\n`;
 
     // 定义文件路径
-    const filePath = path.join(__dirname, "src", "content", "blog", fileName);
+    const filePath = path.join(__dirname, "src", "content", "posts", fileName);
 
     // 写入文件
     fs.writeFile(filePath, content, (err) => {
