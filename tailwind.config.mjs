@@ -29,7 +29,7 @@ export default {
       },
       borderColor: {
         skin: {
-          line: getCssVar("--color-border"),
+          line: getCssVar("--color-text-base"),
           fill: getCssVar("--color-text-base"),
           accent: getCssVar("--color-accent"),
         },
